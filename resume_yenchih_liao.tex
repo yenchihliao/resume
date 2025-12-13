@@ -2,29 +2,64 @@
 \documentclass[11pt]{article}
 
 % ------------------------------------------------
-% Basic packages
-\usepackage[margin=1in]{geometry}
+% Modern packages
+\usepackage[margin=0.7in]{geometry}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \usepackage{titlesec}
 \usepackage{array}
 \usepackage{parskip}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage[sfdefault,light]{roboto}
+\usepackage[T1]{fontenc}
+
+% ------------------------------------------------
+% Colors
+\definecolor{accent}{HTML}{1E3A5F}
+\definecolor{subtext}{HTML}{4A5568}
+\definecolor{rulecolor}{HTML}{CBD5E0}
+
+% ------------------------------------------------
+% Section formatting with underline
+\newcommand{\sectionrule}{\textcolor{rulecolor}{\rule{\linewidth}{0.8pt}}}
+\titleformat{\section}
+  {\large\bfseries\color{accent}}
+  {}
+  {0pt}
+  {\MakeUppercase}
+  [\vspace{-6pt}\sectionrule]
+\titlespacing{\section}{0pt}{14pt}{8pt}
 
 % ------------------------------------------------
 % Formatting
 \setlength{\parindent}{0pt}
-\setlist[itemize]{leftmargin=*, itemsep=1pt, topsep=1pt, parsep=0pt}
-\titleformat{\section}{\large\bfseries}{}{}{\uppercase}
+\setlist[itemize]{leftmargin=1.2em, itemsep=4pt, topsep=4pt, parsep=0pt}
+\renewcommand{\labelitemi}{\textcolor{accent}{\faAngleRight}}
 
 % ------------------------------------------------
-% Header
+% Custom commands
+\newcommand{\jobtitle}[4]{%
+  \textbf{\large #1} \hfill \textcolor{subtext}{#2}\\[-2pt]
+  \textit{\textcolor{subtext}{#3, #4}}%
+}
+
+% ------------------------------------------------
 \begin{document}
+
+% Header
 \begin{center}
-    {\LARGE \textbf{Yen\textendash Chih Liao}}\\[8pt]
-    \href{mailto:yen.yenchih.liao@gmail.com}{yen.yenchih.liao@gmail.com} \quad\textbullet\quad
-    (+886) 972\textendash190\textendash248 \quad\textbullet\quad
-    Wuri Dist, Taichung City 414
+    {\Huge\bfseries\color{accent} Yen-Chih Liao}\\[10pt]
+    \textcolor{subtext}{%
+        \faEnvelope\hspace{4pt}\href{mailto:yen.yenchih.liao@gmail.com}{yen.yenchih.liao@gmail.com}
+        \hspace{12pt}|\hspace{12pt}
+        \faPhone*\hspace{4pt}(+886) 972-190-248
+        \hspace{12pt}|\hspace{12pt}
+        \faMapMarker*\hspace{4pt}Wuri Dist, Taichung City 414
+    }
 \end{center}
+
+\vspace{4pt}
 
 % ------------------------------------------------
 \section*{Summary}
@@ -33,82 +68,67 @@ Seasoned R\&D Engineer with over four years of software-industry experience acro
 % ------------------------------------------------
 \section*{Work Experience}
 
-\textbf{Web3 Engineer} \hfill Mar 2024 -- Present\\
-\textit{XY Finance (Web3 team), Taipei, Taiwan}
+\jobtitle{Web3 Engineer}{Mar 2024 -- Present}{XY Finance (Web3 team)}{Taipei, Taiwan}
 \begin{itemize}
-    \item \textbf{Smart Contract Testing \& Auditing:}
-    \begin{itemize}
-        \item Authored comprehensive unit tests for Ethereum smart contracts using the Foundry framework to improve robustness prior to audits
-        \item Systematically monitored contract changes; shrunk contract size by 20\% and reduced gas cost by 5\%
-        \item Increased test coverage by 50\%+
-    \end{itemize}
-    \item \textbf{Technical Support \& Reliability:}
-    \begin{itemize}
-        \item Diagnosed and resolved rebuild errors in user environments using Foundry toolchain; improved reliability and developer UX
-        \item Proposed smart contract dryrun method that speeds up error detection by at least 20x
-    \end{itemize}
-    \item \textbf{Seamless Upgrades \& Security Management:}
-    \begin{itemize}
-        \item Orchestrated contract upgrades to align with regulatory and business requirements; coordinated APIs, backend, and database changes to achieve continuous availability
-        \item Reduced later engineering effort by at least 7x; scaled down downtime by at least 10x
-    \end{itemize}
-    \item \textbf{Third-Party Integration \& User Experience Enhancement:}
-    \begin{itemize}
-        \item Successfully integrated product with third-party smart contract, providing users with improved transaction options
-        \item 88.75\% of users of the same transaction type benefit from this enhanced functionality
-    \end{itemize}
-    \item \textbf{Chain Integrations \& Multi-Chain Support:}
-    \begin{itemize}
-        \item Broadened product support to different blockchain networks, including L1 (Berachain), L2 (Scroll), and zk-sync L2 (Abstract) solutions
-        \item Introduced 2.1\% traffic to our project and expanded user access and transaction capabilities across multiple ecosystems
-    \end{itemize}
+    \item \textbf{Smart Contract Testing \& Auditing:} Authored comprehensive unit tests for Ethereum smart contracts using Foundry; shrunk contract size by 20\% and reduced gas cost by 5\%; increased test coverage by 50\%+.
+    \item \textbf{Technical Support \& Reliability:} Diagnosed and resolved rebuild errors in user environments using Foundry toolchain; proposed smart contract dryrun method that speeds up error detection by at least 20x.
+    \item \textbf{Seamless Upgrades \& Security:} Orchestrated contract upgrades to align with regulatory and business requirements; coordinated APIs, backend, and database changes achieving continuous availability; reduced later engineering effort by 7x and downtime by 10x.
+    \item \textbf{Third-Party Integration:} Successfully integrated product with third-party smart contracts; 88.75\% of users of the same transaction type now benefit from enhanced functionality.
+    \item \textbf{Multi-Chain Support:} Broadened product support to L1 (Berachain), L2 (Scroll), and zk-sync L2 (Abstract) networks; introduced 2.1\% traffic and expanded user access across multiple ecosystems.
+    \item \textbf{EIP-7702 Frontend Service:} Built a modular wallet system in React/TypeScript supporting EIP-7702 authorization workflows, smart account creation, and multi-wallet compatibility (MetaMask, local keys) with ZeroDev integration.
 \end{itemize}
 
-\textbf{R\&D Software Engineer} \hfill Nov 2021 -- Jul 2023\\
-\textit{Taisys (GameFi development team), Taipei, Taiwan}
+\vspace{8pt}
+
+\jobtitle{R\&D Software Engineer}{Nov 2021 -- Jul 2023}{Taisys (GameFi development team)}{Taipei, Taiwan}
 \begin{itemize}
-    \item \textbf{Full-Stack Web3 Development:} Launched Solidity contracts with Hardhat; built demo DApps with React; customized and deployed open-source stacks (e.g., Omni/TokenBridge, ProjectOpenSea/seadrop, Gnosis/MultiSigWallet) to company needs; built automated data pipelines on GKE with real-time notifications.
+    \item \textbf{Full-Stack Web3 Development:} Launched Solidity contracts with Hardhat; built demo DApps with React; customized and deployed open-source stacks (Omni/TokenBridge, ProjectOpenSea/seadrop, Gnosis/MultiSigWallet); built automated data pipelines on GKE with real-time notifications.
 \end{itemize}
 
-\textbf{Contractor (R\&D)} \hfill Apr 2019 -- May 2020\\
-\textit{HTC DeepQ (ML/Healthcare division), New Taipei, Taiwan}
+\vspace{8pt}
+
+\jobtitle{Contractor (R\&D)}{Apr 2019 -- May 2020}{HTC DeepQ (ML/Healthcare division)}{New Taipei, Taiwan}
 \begin{itemize}
-    \item Implemented a prototype of \textit{MedRec} (Stanford academy paper) on a private chain in a team of five.
+    \item Implemented a prototype of \textit{MedRec} (Stanford academy paper) on a private blockchain in a team of five.
 \end{itemize}
 
 % ------------------------------------------------
 \section*{Skills}
-\textbf{Programming:} Solidity, Python, C++, JavaScript, Go, Shell Script\\
-\textbf{Web3 \& Smart Contract Standards:} ERC20, ERC712, ERC721, ERC4337, ERC4626, ERC7702, ERC7579, Ownable, AccessControl, CREATE2, CREATE3, Upgradeable, Permit, Permit2\\
-\textbf{AI Integration \& Prompt Engineering:} Leveraging AI agents with versatile prompting techniques for enhanced development workflows\\
-\textbf{Version Control \& CI/CD:} Git; CircleCI pipelines\\
-\textbf{Code Analysis \& Refactoring:} Object-oriented design, design patterns, code tracing \& refactoring\\
-\textbf{CLI:} Full command-line development workflows\\
-\textbf{Cloud:} Google Cloud Platform (Cloud SQL, IAM, Secret Manager, GKE)\\
-\textbf{Containers \& Orchestration:} Docker, Kubernetes
+
+\begin{tabular}{@{} >{\bfseries\color{accent}}l @{\hspace{12pt}} p{13.5cm} @{}}
+Programming & Solidity, Python, C++, JavaScript, TypeScript, Go, Shell Script \\[4pt]
+Frontend & React, Vue.js, Quasar Framework, Next.js \\[4pt]
+Web3 Standards & ERC20, ERC712, ERC721, ERC4337, ERC4626, ERC7702, ERC7579, Ownable, AccessControl, CREATE2, CREATE3, Upgradeable, Permit, Permit2 \\[4pt]
+DevOps & Git, CircleCI pipelines, Docker, Kubernetes \\[4pt]
+Cloud & Google Cloud Platform (Cloud SQL, IAM, Secret Manager, GKE) \\[4pt]
+Practices & Object-oriented design, design patterns, code tracing \& refactoring, CLI workflows
+\end{tabular}
 
 % ------------------------------------------------
 \section*{Education}
-\textbf{National Taiwan University (Taipei, Taiwan)}\\
-M.S., Networking and Multimedia \hfill Sep 2018 -- Jan 2021
+
+\textbf{\large National Taiwan University} \hfill \textcolor{subtext}{Taipei, Taiwan}
+
+\vspace{6pt}
+
+\textbf{M.S., Networking and Multimedia} \hfill \textcolor{subtext}{Sep 2018 -- Jan 2021}
 \begin{itemize}
     \item Research focus: blockchain consensus algorithms for consortium chains.
     \item Publication: \textit{View-base Federated Byzantine Agreement System for Environmental Blockchain} (BRAINS, Jul 2021).
 \end{itemize}
-B.S., Computer Science and Information Engineering \hfill Sep 2014 -- Jun 2018
+
+\textbf{B.S., Computer Science and Information Engineering} \hfill \textcolor{subtext}{Sep 2014 -- Jun 2018}
 \begin{itemize}
     \item Publications: \textit{Applying Blockchain to an Automated Clearinghouse System} (TANET, Oct 2017); \textit{Governance on the Drug Supply Chain via Gcoin Blockchain} (IJERPH, May 2018).
 \end{itemize}
 
 % ------------------------------------------------
 \section*{Languages}
-Mandarin (native)\quad|\quad English (fluent)\quad|\quad Japanese (intermediate; JLPT N2)
 
-% ------------------------------------------------
-% Optional: Last updated footer (comment out if undesired)
-% \vfill
-% \begin{center}
-%     \small Last updated: \today
-% \end{center}
+\faLanguage\hspace{6pt}Mandarin \textcolor{subtext}{(native)}
+\hspace{16pt}|\hspace{16pt}
+English \textcolor{subtext}{(fluent)}
+\hspace{16pt}|\hspace{16pt}
+Japanese \textcolor{subtext}{(intermediate; JLPT N2)}
 
 \end{document}
